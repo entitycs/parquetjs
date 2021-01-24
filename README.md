@@ -150,6 +150,7 @@ let reader = await parquet.ParquetReader.openS3(client,params);
 
 //v3 example
 const {S3Client, HeadObjectCommand, GetObjectCommand} = require('@aws-sdk/client-s3');
+<<<<<<< HEAD
 const client = new S3Client({region:"us-east-1"});
 <<<<<<< HEAD
 let reader = await parquet.ParquetReader.openS3(
@@ -159,6 +160,14 @@ let v3reader = await parquet.ParquetReader.openS3(
   {S3Client:client, HeadObjectCommand, GetObjectCommand},
   params
 );
+=======
+const v3client = new S3Client({region:"us-east-1"});
+let commands = {
+    headObjectCommand: HeadObjectCommand,
+    getObjectCommand: GetObjectCommand
+};
+let v3reader = await parquet.ParquetReader.openS3v3(v3client, commands, params);
+>>>>>>> Add openS3v3 functions to ParquetReader, ParquetEnvelopeReader. Provide example in README.
 ```
 
 ### Reading data from a buffer
