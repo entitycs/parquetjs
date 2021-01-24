@@ -151,7 +151,11 @@ let reader = await parquet.ParquetReader.openS3(client,params);
 //v3 example
 const {S3Client, HeadObjectCommand, GetObjectCommand} = require('@aws-sdk/client-s3');
 const client = new S3Client({region:"us-east-1"});
+<<<<<<< HEAD
 let reader = await parquet.ParquetReader.openS3(
+=======
+let v3reader = await parquet.ParquetReader.openS3(
+>>>>>>> Add aws-sdk-js-v3 compatibility for openS3 function. Changes applied to ParquetReader, ParquetEnvelopeReader. Provide example in README.
   {S3Client:client, HeadObjectCommand, GetObjectCommand},
   params
 );
