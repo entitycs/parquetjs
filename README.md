@@ -131,9 +131,9 @@ Parquet files can be read from an S3 object without having to download the whole
 You will have to supply the aws-sdk client as first argument and the bucket/key information 
 as second argument to the function `parquetReader.openS3`. 
 
-If using version 3 of the sdk, aws-sdk-js-v3, supply as the client argument an object
-containing an already constructed S3Client along with the plain (and not yet constructed)
-GetObjectCommand and HeadObjectCommand classes / modules. 
+If using version 3 of the aws-sdk for your S3 client, supply as the client argument an object
+containing an already constructed S3Client along with the plain HeadObjectCommand and 
+GetObjectCommand modules. 
 
 ``` js
 const params = {
