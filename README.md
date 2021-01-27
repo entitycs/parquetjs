@@ -129,11 +129,11 @@ let reader = await parquet.ParquetReader.openUrl(request,'https://domain/fruits.
 
 Parquet files can be read from an S3 object without having to download the whole file.
 You will have to supply the aws-sdk client as first argument and the bucket/key information 
-as second argument to the function `parquetReader.openS3`. If using aws-sdk-js-v3, supply
-in order, an already constructed S3Client, an object containing the not yet constructed
-GetObjectCommand and HeadObjectCommand classes (with keys as shown; the command names
-in camel-case), and finally, supply the same params required for version 2 of sdk as the
-third argument to the function `parquetReader.openS3v3`.
+as second argument to the function `parquetReader.openS3`. 
+
+If using version 3 of the sdk, aws-sdk-js-v3, supply as the client argument an object
+containing an already constructed S3Client along with the plain (and not yet constructed)
+GetObjectCommand and HeadObjectCommand classes / modules. 
 
 ``` js
 const params = {
@@ -150,12 +150,11 @@ let reader = await parquet.ParquetReader.openS3(client,params);
 
 //v3 example
 const {S3Client, HeadObjectCommand, GetObjectCommand} = require('@aws-sdk/client-s3');
-const v3client = new S3Client({region:"us-east-1"});
-let commands = {
-    headObjectCommand: HeadObjectCommand,
-    getObjectCommand: GetObjectCommand
-};
-let v3reader = await parquet.ParquetReader.openS3v3(v3client, commands, params);
+const client = new S3Client({region:"us-east-1"});
+let v3reader = await parquet.ParquetReader.openS3(
+  {S3Client:client, HeadObjectCommand, GetObjectCommand},
+  params
+);
 ```
 
 ### Reading data from a buffer
