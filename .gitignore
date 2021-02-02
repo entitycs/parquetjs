@@ -4,5 +4,5 @@ npm-debug.log
 #package-lock.json
 .nyc_output
 yarn.lock
-
+.npmignore
 !test/test-files/*.parquet

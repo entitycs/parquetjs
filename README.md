@@ -5,14 +5,14 @@ fully asynchronous, pure node.js implementation of the Parquet file format
 <!-- [![Build Status](https://travis-ci.org/ZJONSSON/parquetjs.png?branch=master)](http://travis-ci.org/ZJONSSON/parquetjs) -->
 [![Actions Status](https://github.com/entitycs/parquetjs/workflows/NodeJsCI/badge.svg)](https://github.com/entitycs/parquetjs/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/parquetjs-lite.svg)](https://badge.fury.io/js/parquetjs-lite)
+[![npm version](https://badge.fury.io/js/%40entitycs%2Fparquetjs-micro.svg)](https://badge.fury.io/js/%40entitycs%2Fparquetjs-micro)
 
 This package contains a fully asynchronous, pure JavaScript implementation of
 the [Parquet](https://parquet.apache.org/) file format. The implementation conforms with the
 [Parquet specification](https://github.com/apache/parquet-format) and is tested
 for compatibility with Apache's Java [reference implementation](https://github.com/apache/parquet-mr).
 
-As a fork of parquetjs-lite, this project aims to conform more with microservices (eg. AWS Lambda, AWS Athena, etc.) than it aims to be a robust implementation.  For example, Brotli (available in parquetjs-lite) has been stripped from this fork, as while Brotli's compression rates are high, its speed (both in terms of cold-start loading times and compression/decompression times) are slow. Its resource usage (memory/cpu) is also high relative to other solutions which breaks the goal of using it within the context of "snappy" microservices (if you will).
+As a fork of parquetjs-lite, this project aims to conform more with microservices (eg. AWS Lambda, AWS Athena, etc.) than it aims to be a robust implementation.  For example, Brotli (available in parquetjs-lite) has been stripped from this fork, as while Brotli's compression rates are high, its speed (both in terms of cold-start loading times and compression/decompression times) are slow. Its resource usage (memory/cpu) is also high relative to other solutions which breaks the goal of using it within the context of "snappy" serverless microservices (if you will).
 
 **What is Parquet?**: Parquet is a column-oriented file format; it allows you to
 write a large amount of structured data to a file, compress it and then read parts
@@ -22,17 +22,11 @@ of it back out efficiently. The Parquet format is based on [Google's Dremel pape
 Installation
 ------------
 
-~~To use parquet.js with node.js, install it using npm (not yet available publically)~~:
+To use parquet.js with node.js, install it using npm:
 ```
-  $ ~~npm install parquetjs-ecs-lite~~
+  $ npm install @entitycs/parquetjs-micro
 ```
 
-You will need to use a cloned (and preferably stripped) version of this repository for the time being.  It is recommended you remove the .git folder, and test folder in production, to minimize the project thumbprint.  Install the stripped base folder into your project root (next to package.json) and add it to
-your package.json as a file reference in your dependencies.  For example:
-```
-  "dependencies": {
-    "parquetjs-ecs-lite": "file:./parquetjs-ecs-lite/"
-  }
 ```
 
 _parquet.js requires node.js >= 7.6.0_
@@ -45,7 +39,7 @@ Once you have installed the parquet.js library, you can import it as a single
 module:
 
 ``` js
-var parquet = require('parquetjs-lite');
+var parquet = require('@entitycs/parquetjs-micro');
 ```
 
 Parquet files have a strict schema, similar to tables in a SQL database. So,
