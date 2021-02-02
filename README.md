@@ -12,6 +12,8 @@ the [Parquet](https://parquet.apache.org/) file format. The implementation confo
 [Parquet specification](https://github.com/apache/parquet-format) and is tested
 for compatibility with Apache's Java [reference implementation](https://github.com/apache/parquet-mr).
 
+As a fork of parquetjs-lite, this project aims to conform more with microservices (eg. AWS Lambda, AWS Athena, etc.) than it aims to be a robust implementation.  For example, Brotli (available in parquetjs-lite) has been stripped from this fork, as while Brotli's compression rates are high, its speed (both in terms of cold-start loading times and compression/decompression times) are slow. Its resource usage (memory/cpu) is also high relative to other solutions which breaks the goal of using it within the context of "snappy" microservices (if you will).
+
 **What is Parquet?**: Parquet is a column-oriented file format; it allows you to
 write a large amount of structured data to a file, compress it and then read parts
 of it back out efficiently. The Parquet format is based on [Google's Dremel paper](https://www.google.co.nz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwj_tJelpv3UAhUCm5QKHfJODhUQFggsMAE&url=http%3A%2F%2Fwww.vldb.org%2Fpvldb%2Fvldb2010%2Fpapers%2FR29.pdf&usg=AFQjCNGyMk3_JltVZjMahP6LPmqMzYdCkw).
@@ -20,10 +22,17 @@ of it back out efficiently. The Parquet format is based on [Google's Dremel pape
 Installation
 ------------
 
-To use parquet.js with node.js, install it using npm:
-
+~~To use parquet.js with node.js, install it using npm (not yet available publically)~~:
 ```
-  $ npm install parquetjs-lite
+  $ ~~npm install parquetjs-ecs-lite~~
+```
+
+You will need to use a cloned (and preferably stripped) version of this repository for the time being.  It is recommended you remove the .git folder, and test folder in production, to minimize the project thumbprint.  Install the stripped base folder into your project root (next to package.json) and add it to
+your package.json as a file reference in your dependencies.  For example:
+```
+  "dependencies": {
+    "parquetjs-ecs-lite": "file:./parquetjs-ecs-lite/"
+  }
 ```
 
 _parquet.js requires node.js >= 7.6.0_
