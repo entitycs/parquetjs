@@ -61,9 +61,8 @@ ttypes.CompressionCodec = {
   'SNAPPY': 1,
   'GZIP': 2,
   'LZO': 3,
-  'BROTLI': 4,
-  'LZ4': 5,
-  'ZSTD': 6
+  'LZ4': 4,
+  'ZSTD': 5
 };
 ttypes.PageType = {
   'DATA_PAGE': 0,
@@ -76,7 +75,7 @@ ttypes.BoundaryOrder = {
   'ASCENDING': 1,
   'DESCENDING': 2
 };
-Statistics = module.exports.Statistics = function(args) {
+Statistics = module.exports.Statistics = function (args) {
   this.max = null;
   this.min = null;
   this.null_count = null;
@@ -105,7 +104,7 @@ Statistics = module.exports.Statistics = function(args) {
   }
 };
 Statistics.prototype = {};
-Statistics.prototype.read = function(input) {
+Statistics.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -167,7 +166,7 @@ Statistics.prototype.read = function(input) {
   return;
 };
 
-Statistics.prototype.write = function(output) {
+Statistics.prototype.write = function (output) {
   output.writeStructBegin('Statistics');
   if (this.max !== null && this.max !== undefined) {
     output.writeFieldBegin('max', Thrift.Type.STRING, 1);
@@ -204,9 +203,9 @@ Statistics.prototype.write = function(output) {
   return;
 };
 
-StringType = module.exports.StringType = function(args) {};
+StringType = module.exports.StringType = function (args) {};
 StringType.prototype = {};
-StringType.prototype.read = function(input) {
+StringType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -223,16 +222,16 @@ StringType.prototype.read = function(input) {
   return;
 };
 
-StringType.prototype.write = function(output) {
+StringType.prototype.write = function (output) {
   output.writeStructBegin('StringType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-UUIDType = module.exports.UUIDType = function(args) {};
+UUIDType = module.exports.UUIDType = function (args) {};
 UUIDType.prototype = {};
-UUIDType.prototype.read = function(input) {
+UUIDType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -249,16 +248,16 @@ UUIDType.prototype.read = function(input) {
   return;
 };
 
-UUIDType.prototype.write = function(output) {
+UUIDType.prototype.write = function (output) {
   output.writeStructBegin('UUIDType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-MapType = module.exports.MapType = function(args) {};
+MapType = module.exports.MapType = function (args) {};
 MapType.prototype = {};
-MapType.prototype.read = function(input) {
+MapType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -275,16 +274,16 @@ MapType.prototype.read = function(input) {
   return;
 };
 
-MapType.prototype.write = function(output) {
+MapType.prototype.write = function (output) {
   output.writeStructBegin('MapType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-ListType = module.exports.ListType = function(args) {};
+ListType = module.exports.ListType = function (args) {};
 ListType.prototype = {};
-ListType.prototype.read = function(input) {
+ListType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -301,16 +300,16 @@ ListType.prototype.read = function(input) {
   return;
 };
 
-ListType.prototype.write = function(output) {
+ListType.prototype.write = function (output) {
   output.writeStructBegin('ListType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-EnumType = module.exports.EnumType = function(args) {};
+EnumType = module.exports.EnumType = function (args) {};
 EnumType.prototype = {};
-EnumType.prototype.read = function(input) {
+EnumType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -327,16 +326,16 @@ EnumType.prototype.read = function(input) {
   return;
 };
 
-EnumType.prototype.write = function(output) {
+EnumType.prototype.write = function (output) {
   output.writeStructBegin('EnumType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-DateType = module.exports.DateType = function(args) {};
+DateType = module.exports.DateType = function (args) {};
 DateType.prototype = {};
-DateType.prototype.read = function(input) {
+DateType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -353,16 +352,16 @@ DateType.prototype.read = function(input) {
   return;
 };
 
-DateType.prototype.write = function(output) {
+DateType.prototype.write = function (output) {
   output.writeStructBegin('DateType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-NullType = module.exports.NullType = function(args) {};
+NullType = module.exports.NullType = function (args) {};
 NullType.prototype = {};
-NullType.prototype.read = function(input) {
+NullType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -379,14 +378,14 @@ NullType.prototype.read = function(input) {
   return;
 };
 
-NullType.prototype.write = function(output) {
+NullType.prototype.write = function (output) {
   output.writeStructBegin('NullType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-DecimalType = module.exports.DecimalType = function(args) {
+DecimalType = module.exports.DecimalType = function (args) {
   this.scale = null;
   this.precision = null;
   if (args) {
@@ -399,7 +398,7 @@ DecimalType = module.exports.DecimalType = function(args) {
   }
 };
 DecimalType.prototype = {};
-DecimalType.prototype.read = function(input) {
+DecimalType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -433,7 +432,7 @@ DecimalType.prototype.read = function(input) {
   return;
 };
 
-DecimalType.prototype.write = function(output) {
+DecimalType.prototype.write = function (output) {
   output.writeStructBegin('DecimalType');
   if (this.scale !== null && this.scale !== undefined) {
     output.writeFieldBegin('scale', Thrift.Type.I32, 1);
@@ -450,9 +449,9 @@ DecimalType.prototype.write = function(output) {
   return;
 };
 
-MilliSeconds = module.exports.MilliSeconds = function(args) {};
+MilliSeconds = module.exports.MilliSeconds = function (args) {};
 MilliSeconds.prototype = {};
-MilliSeconds.prototype.read = function(input) {
+MilliSeconds.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -469,16 +468,16 @@ MilliSeconds.prototype.read = function(input) {
   return;
 };
 
-MilliSeconds.prototype.write = function(output) {
+MilliSeconds.prototype.write = function (output) {
   output.writeStructBegin('MilliSeconds');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-MicroSeconds = module.exports.MicroSeconds = function(args) {};
+MicroSeconds = module.exports.MicroSeconds = function (args) {};
 MicroSeconds.prototype = {};
-MicroSeconds.prototype.read = function(input) {
+MicroSeconds.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -495,14 +494,14 @@ MicroSeconds.prototype.read = function(input) {
   return;
 };
 
-MicroSeconds.prototype.write = function(output) {
+MicroSeconds.prototype.write = function (output) {
   output.writeStructBegin('MicroSeconds');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-TimeUnit = module.exports.TimeUnit = function(args) {
+TimeUnit = module.exports.TimeUnit = function (args) {
   this.MILLIS = null;
   this.MICROS = null;
   if (args) {
@@ -515,7 +514,7 @@ TimeUnit = module.exports.TimeUnit = function(args) {
   }
 };
 TimeUnit.prototype = {};
-TimeUnit.prototype.read = function(input) {
+TimeUnit.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -551,7 +550,7 @@ TimeUnit.prototype.read = function(input) {
   return;
 };
 
-TimeUnit.prototype.write = function(output) {
+TimeUnit.prototype.write = function (output) {
   output.writeStructBegin('TimeUnit');
   if (this.MILLIS !== null && this.MILLIS !== undefined) {
     output.writeFieldBegin('MILLIS', Thrift.Type.STRUCT, 1);
@@ -568,7 +567,7 @@ TimeUnit.prototype.write = function(output) {
   return;
 };
 
-TimestampType = module.exports.TimestampType = function(args) {
+TimestampType = module.exports.TimestampType = function (args) {
   this.isAdjustedToUTC = null;
   this.unit = null;
   if (args) {
@@ -581,7 +580,7 @@ TimestampType = module.exports.TimestampType = function(args) {
   }
 };
 TimestampType.prototype = {};
-TimestampType.prototype.read = function(input) {
+TimestampType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -616,7 +615,7 @@ TimestampType.prototype.read = function(input) {
   return;
 };
 
-TimestampType.prototype.write = function(output) {
+TimestampType.prototype.write = function (output) {
   output.writeStructBegin('TimestampType');
   if (this.isAdjustedToUTC !== null && this.isAdjustedToUTC !== undefined) {
     output.writeFieldBegin('isAdjustedToUTC', Thrift.Type.BOOL, 1);
@@ -633,7 +632,7 @@ TimestampType.prototype.write = function(output) {
   return;
 };
 
-TimeType = module.exports.TimeType = function(args) {
+TimeType = module.exports.TimeType = function (args) {
   this.isAdjustedToUTC = null;
   this.unit = null;
   if (args) {
@@ -646,7 +645,7 @@ TimeType = module.exports.TimeType = function(args) {
   }
 };
 TimeType.prototype = {};
-TimeType.prototype.read = function(input) {
+TimeType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -681,7 +680,7 @@ TimeType.prototype.read = function(input) {
   return;
 };
 
-TimeType.prototype.write = function(output) {
+TimeType.prototype.write = function (output) {
   output.writeStructBegin('TimeType');
   if (this.isAdjustedToUTC !== null && this.isAdjustedToUTC !== undefined) {
     output.writeFieldBegin('isAdjustedToUTC', Thrift.Type.BOOL, 1);
@@ -698,7 +697,7 @@ TimeType.prototype.write = function(output) {
   return;
 };
 
-IntType = module.exports.IntType = function(args) {
+IntType = module.exports.IntType = function (args) {
   this.bitWidth = null;
   this.isSigned = null;
   if (args) {
@@ -711,7 +710,7 @@ IntType = module.exports.IntType = function(args) {
   }
 };
 IntType.prototype = {};
-IntType.prototype.read = function(input) {
+IntType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -745,7 +744,7 @@ IntType.prototype.read = function(input) {
   return;
 };
 
-IntType.prototype.write = function(output) {
+IntType.prototype.write = function (output) {
   output.writeStructBegin('IntType');
   if (this.bitWidth !== null && this.bitWidth !== undefined) {
     output.writeFieldBegin('bitWidth', Thrift.Type.BYTE, 1);
@@ -762,9 +761,9 @@ IntType.prototype.write = function(output) {
   return;
 };
 
-JsonType = module.exports.JsonType = function(args) {};
+JsonType = module.exports.JsonType = function (args) {};
 JsonType.prototype = {};
-JsonType.prototype.read = function(input) {
+JsonType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -781,16 +780,16 @@ JsonType.prototype.read = function(input) {
   return;
 };
 
-JsonType.prototype.write = function(output) {
+JsonType.prototype.write = function (output) {
   output.writeStructBegin('JsonType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-BsonType = module.exports.BsonType = function(args) {};
+BsonType = module.exports.BsonType = function (args) {};
 BsonType.prototype = {};
-BsonType.prototype.read = function(input) {
+BsonType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -807,14 +806,14 @@ BsonType.prototype.read = function(input) {
   return;
 };
 
-BsonType.prototype.write = function(output) {
+BsonType.prototype.write = function (output) {
   output.writeStructBegin('BsonType');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-LogicalType = module.exports.LogicalType = function(args) {
+LogicalType = module.exports.LogicalType = function (args) {
   this.STRING = null;
   this.MAP = null;
   this.LIST = null;
@@ -867,7 +866,7 @@ LogicalType = module.exports.LogicalType = function(args) {
   }
 };
 LogicalType.prototype = {};
-LogicalType.prototype.read = function(input) {
+LogicalType.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -983,7 +982,7 @@ LogicalType.prototype.read = function(input) {
   return;
 };
 
-LogicalType.prototype.write = function(output) {
+LogicalType.prototype.write = function (output) {
   output.writeStructBegin('LogicalType');
   if (this.STRING !== null && this.STRING !== undefined) {
     output.writeFieldBegin('STRING', Thrift.Type.STRUCT, 1);
@@ -1050,7 +1049,7 @@ LogicalType.prototype.write = function(output) {
   return;
 };
 
-SchemaElement = module.exports.SchemaElement = function(args) {
+SchemaElement = module.exports.SchemaElement = function (args) {
   this.type = null;
   this.type_length = null;
   this.repetition_type = null;
@@ -1095,7 +1094,7 @@ SchemaElement = module.exports.SchemaElement = function(args) {
   }
 };
 SchemaElement.prototype = {};
-SchemaElement.prototype.read = function(input) {
+SchemaElement.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1186,7 +1185,7 @@ SchemaElement.prototype.read = function(input) {
   return;
 };
 
-SchemaElement.prototype.write = function(output) {
+SchemaElement.prototype.write = function (output) {
   output.writeStructBegin('SchemaElement');
   if (this.type !== null && this.type !== undefined) {
     output.writeFieldBegin('type', Thrift.Type.I32, 1);
@@ -1243,7 +1242,7 @@ SchemaElement.prototype.write = function(output) {
   return;
 };
 
-DataPageHeader = module.exports.DataPageHeader = function(args) {
+DataPageHeader = module.exports.DataPageHeader = function (args) {
   this.num_values = null;
   this.encoding = null;
   this.definition_level_encoding = null;
@@ -1268,7 +1267,7 @@ DataPageHeader = module.exports.DataPageHeader = function(args) {
   }
 };
 DataPageHeader.prototype = {};
-DataPageHeader.prototype.read = function(input) {
+DataPageHeader.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1324,7 +1323,7 @@ DataPageHeader.prototype.read = function(input) {
   return;
 };
 
-DataPageHeader.prototype.write = function(output) {
+DataPageHeader.prototype.write = function (output) {
   output.writeStructBegin('DataPageHeader');
   if (this.num_values !== null && this.num_values !== undefined) {
     output.writeFieldBegin('num_values', Thrift.Type.I32, 1);
@@ -1356,9 +1355,9 @@ DataPageHeader.prototype.write = function(output) {
   return;
 };
 
-IndexPageHeader = module.exports.IndexPageHeader = function(args) {};
+IndexPageHeader = module.exports.IndexPageHeader = function (args) {};
 IndexPageHeader.prototype = {};
-IndexPageHeader.prototype.read = function(input) {
+IndexPageHeader.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1375,14 +1374,14 @@ IndexPageHeader.prototype.read = function(input) {
   return;
 };
 
-IndexPageHeader.prototype.write = function(output) {
+IndexPageHeader.prototype.write = function (output) {
   output.writeStructBegin('IndexPageHeader');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-DictionaryPageHeader = module.exports.DictionaryPageHeader = function(args) {
+DictionaryPageHeader = module.exports.DictionaryPageHeader = function (args) {
   this.num_values = null;
   this.encoding = null;
   this.is_sorted = null;
@@ -1399,7 +1398,7 @@ DictionaryPageHeader = module.exports.DictionaryPageHeader = function(args) {
   }
 };
 DictionaryPageHeader.prototype = {};
-DictionaryPageHeader.prototype.read = function(input) {
+DictionaryPageHeader.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1440,7 +1439,7 @@ DictionaryPageHeader.prototype.read = function(input) {
   return;
 };
 
-DictionaryPageHeader.prototype.write = function(output) {
+DictionaryPageHeader.prototype.write = function (output) {
   output.writeStructBegin('DictionaryPageHeader');
   if (this.num_values !== null && this.num_values !== undefined) {
     output.writeFieldBegin('num_values', Thrift.Type.I32, 1);
@@ -1462,7 +1461,7 @@ DictionaryPageHeader.prototype.write = function(output) {
   return;
 };
 
-DataPageHeaderV2 = module.exports.DataPageHeaderV2 = function(args) {
+DataPageHeaderV2 = module.exports.DataPageHeaderV2 = function (args) {
   this.num_values = null;
   this.num_nulls = null;
   this.num_rows = null;
@@ -1499,7 +1498,7 @@ DataPageHeaderV2 = module.exports.DataPageHeaderV2 = function(args) {
   }
 };
 DataPageHeaderV2.prototype = {};
-DataPageHeaderV2.prototype.read = function(input) {
+DataPageHeaderV2.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1576,7 +1575,7 @@ DataPageHeaderV2.prototype.read = function(input) {
   return;
 };
 
-DataPageHeaderV2.prototype.write = function(output) {
+DataPageHeaderV2.prototype.write = function (output) {
   output.writeStructBegin('DataPageHeaderV2');
   if (this.num_values !== null && this.num_values !== undefined) {
     output.writeFieldBegin('num_values', Thrift.Type.I32, 1);
@@ -1623,7 +1622,7 @@ DataPageHeaderV2.prototype.write = function(output) {
   return;
 };
 
-PageHeader = module.exports.PageHeader = function(args) {
+PageHeader = module.exports.PageHeader = function (args) {
   this.type = null;
   this.uncompressed_page_size = null;
   this.compressed_page_size = null;
@@ -1660,7 +1659,7 @@ PageHeader = module.exports.PageHeader = function(args) {
   }
 };
 PageHeader.prototype = {};
-PageHeader.prototype.read = function(input) {
+PageHeader.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1740,7 +1739,7 @@ PageHeader.prototype.read = function(input) {
   return;
 };
 
-PageHeader.prototype.write = function(output) {
+PageHeader.prototype.write = function (output) {
   output.writeStructBegin('PageHeader');
   if (this.type !== null && this.type !== undefined) {
     output.writeFieldBegin('type', Thrift.Type.I32, 1);
@@ -1787,7 +1786,7 @@ PageHeader.prototype.write = function(output) {
   return;
 };
 
-KeyValue = module.exports.KeyValue = function(args) {
+KeyValue = module.exports.KeyValue = function (args) {
   this.key = null;
   this.value = null;
   if (args) {
@@ -1800,7 +1799,7 @@ KeyValue = module.exports.KeyValue = function(args) {
   }
 };
 KeyValue.prototype = {};
-KeyValue.prototype.read = function(input) {
+KeyValue.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1834,7 +1833,7 @@ KeyValue.prototype.read = function(input) {
   return;
 };
 
-KeyValue.prototype.write = function(output) {
+KeyValue.prototype.write = function (output) {
   output.writeStructBegin('KeyValue');
   if (this.key !== null && this.key !== undefined) {
     output.writeFieldBegin('key', Thrift.Type.STRING, 1);
@@ -1851,7 +1850,7 @@ KeyValue.prototype.write = function(output) {
   return;
 };
 
-SortingColumn = module.exports.SortingColumn = function(args) {
+SortingColumn = module.exports.SortingColumn = function (args) {
   this.column_idx = null;
   this.descending = null;
   this.nulls_first = null;
@@ -1868,7 +1867,7 @@ SortingColumn = module.exports.SortingColumn = function(args) {
   }
 };
 SortingColumn.prototype = {};
-SortingColumn.prototype.read = function(input) {
+SortingColumn.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1909,7 +1908,7 @@ SortingColumn.prototype.read = function(input) {
   return;
 };
 
-SortingColumn.prototype.write = function(output) {
+SortingColumn.prototype.write = function (output) {
   output.writeStructBegin('SortingColumn');
   if (this.column_idx !== null && this.column_idx !== undefined) {
     output.writeFieldBegin('column_idx', Thrift.Type.I32, 1);
@@ -1931,7 +1930,7 @@ SortingColumn.prototype.write = function(output) {
   return;
 };
 
-PageEncodingStats = module.exports.PageEncodingStats = function(args) {
+PageEncodingStats = module.exports.PageEncodingStats = function (args) {
   this.page_type = null;
   this.encoding = null;
   this.count = null;
@@ -1948,7 +1947,7 @@ PageEncodingStats = module.exports.PageEncodingStats = function(args) {
   }
 };
 PageEncodingStats.prototype = {};
-PageEncodingStats.prototype.read = function(input) {
+PageEncodingStats.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -1989,7 +1988,7 @@ PageEncodingStats.prototype.read = function(input) {
   return;
 };
 
-PageEncodingStats.prototype.write = function(output) {
+PageEncodingStats.prototype.write = function (output) {
   output.writeStructBegin('PageEncodingStats');
   if (this.page_type !== null && this.page_type !== undefined) {
     output.writeFieldBegin('page_type', Thrift.Type.I32, 1);
@@ -2011,7 +2010,7 @@ PageEncodingStats.prototype.write = function(output) {
   return;
 };
 
-ColumnMetaData = module.exports.ColumnMetaData = function(args) {
+ColumnMetaData = module.exports.ColumnMetaData = function (args) {
   this.type = null;
   this.encodings = null;
   this.path_in_schema = null;
@@ -2068,7 +2067,7 @@ ColumnMetaData = module.exports.ColumnMetaData = function(args) {
   }
 };
 ColumnMetaData.prototype = {};
-ColumnMetaData.prototype.read = function(input) {
+ColumnMetaData.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2230,7 +2229,7 @@ ColumnMetaData.prototype.read = function(input) {
   return;
 };
 
-ColumnMetaData.prototype.write = function(output) {
+ColumnMetaData.prototype.write = function (output) {
   output.writeStructBegin('ColumnMetaData');
   if (this.type !== null && this.type !== undefined) {
     output.writeFieldBegin('type', Thrift.Type.I32, 1);
@@ -2330,7 +2329,7 @@ ColumnMetaData.prototype.write = function(output) {
   return;
 };
 
-ColumnChunk = module.exports.ColumnChunk = function(args) {
+ColumnChunk = module.exports.ColumnChunk = function (args) {
   this.file_path = null;
   this.file_offset = null;
   this.meta_data = null;
@@ -2363,7 +2362,7 @@ ColumnChunk = module.exports.ColumnChunk = function(args) {
   }
 };
 ColumnChunk.prototype = {};
-ColumnChunk.prototype.read = function(input) {
+ColumnChunk.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2433,7 +2432,7 @@ ColumnChunk.prototype.read = function(input) {
   return;
 };
 
-ColumnChunk.prototype.write = function(output) {
+ColumnChunk.prototype.write = function (output) {
   output.writeStructBegin('ColumnChunk');
   if (this.file_path !== null && this.file_path !== undefined) {
     output.writeFieldBegin('file_path', Thrift.Type.STRING, 1);
@@ -2475,7 +2474,7 @@ ColumnChunk.prototype.write = function(output) {
   return;
 };
 
-RowGroup = module.exports.RowGroup = function(args) {
+RowGroup = module.exports.RowGroup = function (args) {
   this.columns = null;
   this.total_byte_size = null;
   this.num_rows = null;
@@ -2496,7 +2495,7 @@ RowGroup = module.exports.RowGroup = function(args) {
   }
 };
 RowGroup.prototype = {};
-RowGroup.prototype.read = function(input) {
+RowGroup.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2570,7 +2569,7 @@ RowGroup.prototype.read = function(input) {
   return;
 };
 
-RowGroup.prototype.write = function(output) {
+RowGroup.prototype.write = function (output) {
   output.writeStructBegin('RowGroup');
   if (this.columns !== null && this.columns !== undefined) {
     output.writeFieldBegin('columns', Thrift.Type.LIST, 1);
@@ -2611,9 +2610,9 @@ RowGroup.prototype.write = function(output) {
   return;
 };
 
-TypeDefinedOrder = module.exports.TypeDefinedOrder = function(args) {};
+TypeDefinedOrder = module.exports.TypeDefinedOrder = function (args) {};
 TypeDefinedOrder.prototype = {};
-TypeDefinedOrder.prototype.read = function(input) {
+TypeDefinedOrder.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2630,14 +2629,14 @@ TypeDefinedOrder.prototype.read = function(input) {
   return;
 };
 
-TypeDefinedOrder.prototype.write = function(output) {
+TypeDefinedOrder.prototype.write = function (output) {
   output.writeStructBegin('TypeDefinedOrder');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-ColumnOrder = module.exports.ColumnOrder = function(args) {
+ColumnOrder = module.exports.ColumnOrder = function (args) {
   this.TYPE_ORDER = null;
   if (args) {
     if (args.TYPE_ORDER !== undefined) {
@@ -2646,7 +2645,7 @@ ColumnOrder = module.exports.ColumnOrder = function(args) {
   }
 };
 ColumnOrder.prototype = {};
-ColumnOrder.prototype.read = function(input) {
+ColumnOrder.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2677,7 +2676,7 @@ ColumnOrder.prototype.read = function(input) {
   return;
 };
 
-ColumnOrder.prototype.write = function(output) {
+ColumnOrder.prototype.write = function (output) {
   output.writeStructBegin('ColumnOrder');
   if (this.TYPE_ORDER !== null && this.TYPE_ORDER !== undefined) {
     output.writeFieldBegin('TYPE_ORDER', Thrift.Type.STRUCT, 1);
@@ -2689,7 +2688,7 @@ ColumnOrder.prototype.write = function(output) {
   return;
 };
 
-PageLocation = module.exports.PageLocation = function(args) {
+PageLocation = module.exports.PageLocation = function (args) {
   this.offset = null;
   this.compressed_page_size = null;
   this.first_row_index = null;
@@ -2706,7 +2705,7 @@ PageLocation = module.exports.PageLocation = function(args) {
   }
 };
 PageLocation.prototype = {};
-PageLocation.prototype.read = function(input) {
+PageLocation.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2747,7 +2746,7 @@ PageLocation.prototype.read = function(input) {
   return;
 };
 
-PageLocation.prototype.write = function(output) {
+PageLocation.prototype.write = function (output) {
   output.writeStructBegin('PageLocation');
   if (this.offset !== null && this.offset !== undefined) {
     output.writeFieldBegin('offset', Thrift.Type.I64, 1);
@@ -2769,7 +2768,7 @@ PageLocation.prototype.write = function(output) {
   return;
 };
 
-OffsetIndex = module.exports.OffsetIndex = function(args) {
+OffsetIndex = module.exports.OffsetIndex = function (args) {
   this.page_locations = null;
   if (args) {
     if (args.page_locations !== undefined) {
@@ -2778,7 +2777,7 @@ OffsetIndex = module.exports.OffsetIndex = function(args) {
   }
 };
 OffsetIndex.prototype = {};
-OffsetIndex.prototype.read = function(input) {
+OffsetIndex.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2821,7 +2820,7 @@ OffsetIndex.prototype.read = function(input) {
   return;
 };
 
-OffsetIndex.prototype.write = function(output) {
+OffsetIndex.prototype.write = function (output) {
   output.writeStructBegin('OffsetIndex');
   if (this.page_locations !== null && this.page_locations !== undefined) {
     output.writeFieldBegin('page_locations', Thrift.Type.LIST, 1);
@@ -2840,7 +2839,7 @@ OffsetIndex.prototype.write = function(output) {
   return;
 };
 
-ColumnIndex = module.exports.ColumnIndex = function(args) {
+ColumnIndex = module.exports.ColumnIndex = function (args) {
   this.null_pages = null;
   this.min_values = null;
   this.max_values = null;
@@ -2865,7 +2864,7 @@ ColumnIndex = module.exports.ColumnIndex = function(args) {
   }
 };
 ColumnIndex.prototype = {};
-ColumnIndex.prototype.read = function(input) {
+ColumnIndex.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -2968,7 +2967,7 @@ ColumnIndex.prototype.read = function(input) {
   return;
 };
 
-ColumnIndex.prototype.write = function(output) {
+ColumnIndex.prototype.write = function (output) {
   output.writeStructBegin('ColumnIndex');
   if (this.null_pages !== null && this.null_pages !== undefined) {
     output.writeFieldBegin('null_pages', Thrift.Type.LIST, 1);
@@ -3028,7 +3027,7 @@ ColumnIndex.prototype.write = function(output) {
   return;
 };
 
-FileMetaData = module.exports.FileMetaData = function(args) {
+FileMetaData = module.exports.FileMetaData = function (args) {
   this.version = null;
   this.schema = null;
   this.num_rows = null;
@@ -3061,7 +3060,7 @@ FileMetaData = module.exports.FileMetaData = function(args) {
   }
 };
 FileMetaData.prototype = {};
-FileMetaData.prototype.read = function(input) {
+FileMetaData.prototype.read = function (input) {
   input.readStructBegin();
   while (true) {
     var ret = input.readFieldBegin();
@@ -3182,7 +3181,7 @@ FileMetaData.prototype.read = function(input) {
   return;
 };
 
-FileMetaData.prototype.write = function(output) {
+FileMetaData.prototype.write = function (output) {
   output.writeStructBegin('FileMetaData');
   if (this.version !== null && this.version !== undefined) {
     output.writeFieldBegin('version', Thrift.Type.I32, 1);
