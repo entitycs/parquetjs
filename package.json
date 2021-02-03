@@ -2,7 +2,7 @@
   "name": "@entitycs/parquetjs-micro",
   "description": "Fully asynchronous, microservice/serverless focused, pure JavaScript implementation of common tasks associated with the Parquet file format. Based on ZJONSSON fork of parquetjs (parquetjs-lite)",
   "main": "parquet.js",
-  "version": "0.1.9",
+  "version": "0.1.8",
   "homepage": "https://github.com/entitycs/parquetjs",
   "author": "entitycs <entitycs@gmail.com>",
   "license": "MIT",

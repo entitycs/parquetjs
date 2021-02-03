@@ -27,8 +27,6 @@ To use parquet.js with node.js, install it using npm:
   $ npm install @entitycs/parquetjs-micro
 ```
 
-```
-
 _parquet.js requires node.js >= 7.6.0_
 
 
